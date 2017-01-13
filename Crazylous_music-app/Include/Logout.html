@@ -1,0 +1,43 @@
+<?php
+	include("dbfile.php");
+	session_start();
+	$browsersess = session_id();
+	$custid = Validate_User_Logged_In();
+	if($custid > 0)
+	{
+		if(loguserout($custid, $browserssess))
+		{
+			header('Location: /.index.php');
+
+		}
+	}
+	else
+	{
+		header('Location: /.index.php');
+	}
+	
+{
+	function loguserout($custid, $browsersess)
+	{
+	global $connection;
+		$sql = "call session_logged_out($custid, 
+			'$browsersess')";
+         $connection->next_result();
+         if($retrieved = $connection->query($sql))
+         {
+         	return 1;
+
+         }
+         else
+         {
+         	return 0;
+         }
+}
+		
+	
+?>
+<div class="divPage">
+		<div class="logoutbanner">
+			<input class="texttolabel" name="msg" id="msg" value="hidden"/>
+		</div>
+</div>

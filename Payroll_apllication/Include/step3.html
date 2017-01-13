@@ -1,0 +1,286 @@
+<?php
+	
+	$fname = "";
+	$lname = "";
+	$hours = "";
+	$hoursWage = "";
+	$overtimehours = "";
+	$taxes = "";
+	$taxrate = 0.24;
+	$grossPay = "";
+	$regularPay = "";
+	$overtimePay = "";
+	$netPay = "";
+	if(isset ($_POST ['submit']))
+  {
+	
+		$errors = array();
+	
+	$fname = $_POST['firstname'];
+	$lname = $_POST['lastname'];
+	$hours = $_POST['hoursworked'];
+	$hoursWage = $_POST['hoursWage'];
+ 
+  
+    $fname = trim($fname);
+	$lname = trim($lname);
+	$hours = trim($hours);
+	$hoursWage = trim($hoursWage); 
+  
+ 	if(empty ($fname))
+	{
+ 		 $errors['firstNameEmpty'] = "*";
+	}
+	if(empty ($lname))
+	{
+ 		 $errors['lastNameEmpty'] = "*";
+	}
+	
+	if(empty ($hours))
+	{
+		 $errors['hoursEmpty'] = "*";
+	}
+  
+	if(empty ($hoursWage))
+	{
+		 $errors['hoursWageEmpty'] = "*";
+	}
+	
+	Validate_First_Name($fname,'firstNamelength');		
+	Validate_Last_Name($lname,'lastNamelength');
+	Validate_Hourly_Wage_Value($hoursWage,'hoursValue');
+	Validate_Hourly_Wage_Numeric($hoursWage,'hoursWageNum');
+	Validate_Hours_Worked_Lenght($hours,'hoursWorkedLenght');
+	Validate_Hours_Worked_Numeric($hours,'hoursWorkedNum');
+	calculate_overtime_hours ($hours);
+	$regularPay = regular_pay ($hours, $hoursWage);
+	$overtimePay = overtime_pay ($hoursWage, $overtimehours);
+	$grossPay = calculate_gross_pay($overtimePay, $regularPay);
+	$taxes = calculate_taxes($grossPay, $taxrate);
+	$netPay = $grossPay - $taxes;
+    
+  }
+	
+
+	function calculate_gross_pay($overtimePay, $regularPay)	
+	{
+		$grossPay = $overtimePay + $regularPay;
+		return $grossPay;
+	}
+
+	function calculate_taxes($grossPay, $taxrate)
+	{
+		$taxes = $grossPay * $taxrate;
+		return $taxes;
+	}
+
+	function Validate_First_Name($string, $index)
+	{
+		global $errors;
+		if(!empty($string))
+		{
+			if(strlen($string) < 2)
+  		    {
+  			 $errors[$index] = "Must be at least 2 characters";
+  		    }
+  	    }
+    }
+  
+	function Validate_Last_Name($string, $index)
+    {
+		global $errors;
+		if(!empty($string))
+  	    {
+			if(strlen($string) < 2 || strlen($string) > 25)
+  		    {
+  			 $errors[$index] = "Must be 2 to 25 characters";
+			}
+		}
+    }
+  
+  
+	function Validate_Hourly_Wage_Value($string,$index)
+    {
+		global $errors;
+		if(!empty($string))
+	    {
+			if(strlen($string) > 10)
+			{
+			 $errors[$index] = "must be greater than $10";
+			}
+		}
+    }
+		
+		function Validate_Hourly_Wage_Numeric($string,$index)
+  {
+		global $errors;
+		if(!empty($string))
+	{
+			if(strlen($string) != 10)
+		{
+				if(!is_numeric($string))
+			{
+			 $errors[$index] = "only are numbers permitted";
+			}
+		}
+	}		
+  
+  }
+		
+		function Validate_Hours_Worked_Lenght($string,$index)
+    {
+		global $errors;
+		if(!empty($string))
+	    {
+			if(strlen($string) > 60)
+			{
+			 $errors[$index] = "can not exceed more than 60";
+			}
+	    }
+    }
+	
+	function Validate_Hours_Worked_Numeric($string,$index)
+   {
+		global $errors;
+		if(!empty($string))
+	    {
+			if(strlen($string) != 60)
+			{
+			    if(!is_numeric($string))
+				{
+				 $errors[$index] = "only are numbers permitted";
+				}
+			}
+		}		
+    }
+	
+	function calculate_overtime_hours ($hours)
+    {
+		global $overtimehours;
+		if ($hours > 40)
+	    {
+		 $overtimehours = $hours - 40; 
+	    }
+		else
+			{
+		     $overtimehours = 0;
+			}
+    }
+	
+	function regular_pay ($hours, $hoursWage)
+	{
+		if($hours <= 40)
+		{
+			$regularPay = $hours * $hoursWage;
+		}
+	    else
+		   {
+			$regularPay = 40 * $hoursWage;
+		   }
+			return $regularPay;
+	}
+	   
+	
+	function overtime_pay ($hoursWage, $overtimehours)
+	{
+		$overtimePay = ($hoursWage * 1.5) * $overtimehours;
+		return $overtimePay;
+	}
+	
+
+?>
+		
+	<form method="POST" action="" autocomplete="off">
+	<div class='bodyContent'>	
+				 <label class="typedText"></label>
+				<br>
+				<br>
+				<div class = "labelformat";>
+				 <label for ="firstname">First Name</label>
+				 </div>
+				 &nbsp;
+				<input class="textboxW" id="include" type="text" name="firstname" value ="<?php echo $fname;?>" />
+				<div class="errorStar">
+					<?php if(isset($errors['firstNameEmpty'])) echo $errors ['firstNameEmpty']; ?>
+					&nbsp;
+					<?php if(isset($errors['firstNamelength'])) echo $errors['firstNamelength'];?>
+			  </div>
+			  <br/>
+			  <br/>
+			  <div class = "labelformat";>
+				<label for ="lastname">Last Name</label>
+				</div>
+				&nbsp;
+			  <input class="textboxW" id="lastName" type="text" name="lastname" value ="<?php echo $lname; ?>"/>
+			  <div class="errorStar">
+				   <?php if(isset($errors['lastNameEmpty'])) echo $errors ['lastNameEmpty']; ?>
+				   &nbsp;
+				   <?php if(isset($errors['lastNamelength'])) echo $errors['lastNamelength'];?>
+			  </div>
+			  <br/>
+			  <br/>
+			  <div class = "labelformat";>
+				<label for ="hours">Number of hours</label>
+				</div>
+				&nbsp;
+			  <input class="textboxW" id="hoursWorked" type="text" name="hoursworked" value ="<?php echo $hours; ?>"/>
+              <div class="errorStar">
+					<?php if(isset($errors['hoursEmpty'])) echo $errors ['hoursEmpty']; ?>
+					&nbsp;
+					<?php if(isset($errors['hoursWorkedLenght'])) echo $errors['hoursWorkedLenght'];?>
+					<?php if(isset($errors['hoursWorkedNum'])) echo $errors['hoursWorkedNum']; ?>
+			  </div>
+			  <br/>
+			  <br/>
+			  <div class = "labelformat";>
+				<label for ="hourswage">Hours Wage</label>
+				</div>
+				&nbsp;
+			  <input class="textboxW" id="hoursWage" type="text" name="hoursWage"  value ="<?php echo $hoursWage; ?>"/>
+			  <div class="errorStar">
+					<?php if(isset($errors['hoursWageEmpty'])) echo $errors ['hoursWageEmpty']; ?>
+					&nbsp;
+					<?php if(isset($errors['hoursValue'])) echo $errors['hoursValue'];?>
+					<?php if(isset($errors['hoursWageNum'])) echo $errors['hoursWageNum'];?>
+			  </div>
+			  <br/>
+			  <br/>
+			   <div class = "labelformat";>
+				<label for ="overtimepay">Overtime Pay</label>
+				</div>
+				&nbsp;
+			  <input class="textboxW" type="text" name="overtime" value ="<?php echo $overtimePay; ?>" />
+			  <br/>
+			  <br/>
+			   <div class = "labelformat";>
+				<label for ="regularpay">Regular Pay</label>
+				</div>
+				&nbsp;
+			  <input class="textboxW" type="text" name="regularPay" value ="<?php echo $regularPay; ?>" />
+			  <br/>
+			  <br/>
+			   <div class = "labelformat";>
+				<label for ="grosspay">Gross Pay</label>
+				</div>
+				&nbsp;
+			  <input class="textboxW" type="text" name="grossPay" value ="<?php echo $grossPay; ?>" />
+			  <br/>
+			  <br/>
+		       <div class = "labelformat";>
+				<label for ="taxes">Texes calculate</label>
+				</div>
+				&nbsp;
+			  <input class="textboxW" type="text" name="taxes" value ="<?php echo $taxes; ?>" />
+			  <br/>
+			  </br>
+			  <div class = "labelformat";>
+				<label for ="netpay">Net Pay</label>
+				</div>
+				&nbsp; 
+			  <input class="textboxW" type="text" name="netPay" value ="<?php echo $netPay; ?>" />
+			  <br/>
+			  <br/>
+			  <input  type="Submit" name="submit" value= "Calculate" />
+			 
+			</div>
+		</form>

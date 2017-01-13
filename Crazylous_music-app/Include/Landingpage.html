@@ -1,0 +1,38 @@
+<?php
+include ('./dbfile.php'); 
+session_start();
+$browsersess = session_id();
+$custID=Validate_User_Logged_In();
+if($custID > 0)
+{
+
+}
+else
+{
+	//header('Location: index.php');
+}
+	
+
+function Validate_User_Logged_In()
+{
+	global $connection, $browsersess,$custID;
+	$sql="call session_verify_logged_in('$browsersess')";	
+	$connection->next_result();
+         if($retrieved = $connection->query($sql))
+         {
+			$row = $retrieved->fetch_row();    
+			$custID = $row[0];
+         	return $custID;
+
+         }
+         else
+         {
+         	return 0;
+         }
+}
+
+
+?>
+<div class="divPage">
+
+</div>

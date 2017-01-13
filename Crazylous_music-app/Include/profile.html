@@ -1,0 +1,129 @@
+<?php
+// declare the variables for each of the HTML elements
+// declare a browseress variable and start the session and use session_id to the session variable.
+// copy the Validate_User_Logged_In function from the landing page
+// call the Validate_User_Logged_In function to verify the user is still logged in
+// then write a php function that will call the procedure "customer_load_by_ID"
+// display the results on the web page 
+
+
+?>
+<form method="POST" action="" autocomplete="off">
+<div class="divPage">
+	<div class="bodyContent">
+		<h2>Change Profile</h2>
+		<h3>Personal</h3>
+		<div class="row">
+			<label class="rowtextlabel">First Name</label>
+			<input class="rowinput" type="text" name="firstname" id="fname" maxlength="40" value="<?php echo $firstname; ?>" />
+			<div class="errorStar">
+				<?php if(isset($errors['firstname'])) echo $errors['firstname'];?>				
+			</div>	
+			<label class="rowtextlabelright">Last Name</label>
+			<input class="rowinput" type="text" name="lastname" id="lname" maxlength="40" value="<?php echo $lastname; ?>"/>
+			<div class="errorStar">
+				<?php if(isset($errors['lastname'])) echo $errors['lastname'];?>				
+			</div>
+		</div>
+		<br />
+		<div class="row">
+			<label class="rowtextlabel">Email</label>
+			<input class="rowinput" type="text" name="email" id="email" maxlength="255" value="<?php echo $email; ?>" />		
+			<div class="errorStar">
+				<?php if(isset($errors['email'])) echo $errors['email'];?>	
+			<label class="rowtextlabel">Username</label>
+			<input class="rowinput" type="text" name="uname" id="uname" maxlength="255" value="<?php echo $uname; ?>" />		
+			<div class="errorStar">
+				<?php if(isset($errors['uname'])) echo $errors['uname'];?>				
+			</div>				
+			</div>
+		</div>
+		<br />
+		<div class="row">
+			<label class="rowtextlabel">Password</label>
+			<input class="rowinput" type="password" name="pswd" id="pswd" maxlength="15" />
+			<div class="errorStar">
+				<?php if(isset($errors['password'])) echo $errors['password'];?>				
+			</div>
+			<label class="rowtextlabelright">confirm</label>
+			<input class="rowinput" type="password" name="confirm" id="confirm"  />
+			<div class="errorStar">
+				<?php if(isset($errors['confirm'])) echo $errors['confirm'];?>				
+			</div>
+		</div>
+		<br />
+		<h3>Address</h3>
+		<div class="row">
+			<label class="rowtextlabel">Street</label>
+			<input class="rowinput" type="text" name="street" id="street" maxlength="125" value="<?php echo $street; ?>"/>
+			<div class="errorStar">
+				<?php if(isset($errors['street'])) echo $errors['street'];?>				
+			</div>
+			<label class="rowtextlabelright">suite</label>
+			<input class="rowinput" type="text" name="suite" id="suite" maxlength="8" value="<?php echo $suite; ?>" />			
+		</div>
+		<br />
+		<div class="row">
+			<label class="rowtextlabel">City</label>
+			<input class="rowinput" type="text" name="city" id="city"  maxlength="35" value="<?php echo $city; ?>"/>
+			<div class="errorStar">
+				<?php if(isset($errors['city'])) echo $errors['city'];?>				
+			</div>
+			<label class="rowtextlabelright">province</label>
+			&nbsp;
+			<select  name="province" selected="<?php echo $province; ?>">  
+					<option value="">Select Province</option>					
+					<option value ="ON">Ontario</option>							
+			</select>
+				
+			<div class="errorStar">
+				<?php if(isset($errors['province'])) echo $errors['province'];?>				
+			</div>
+		</div>
+		<div class="row">
+			<label class="rowtextlabel">Postal</label>
+			<input class="rowinput" type="text" name="postalcode" id="postalcode" maxlength="7" value="<?php echo $postal; ?>"/>
+				<div class="errorStar">
+				<?php if(isset($errors['postalcode'])) echo $errors['postalcode'];?>				
+			</div>	
+			
+			<label class="rowtextlabel">Country</label>				
+			&nbsp;
+			<select name= "country" value="<?php echo $country; ?>">  
+				<option value="">Select Country</option>			    
+					<option value ="CA">Canada</option>					
+			</select>
+			<div class="errorStar">
+				<?php if(isset($errors['country'])) echo $errors['country'];?>				
+			</div>
+		</div>
+		<br />
+		<h3>Contact Numbers</h3>
+		<div class="row">
+			<label class="rowtextlabel">Home</label>
+			<input class="rowinput" type="text" name="homephone" id="homephone" maxlength="14" value="<?php echo $homephone; ?>" />
+			<label class="rowtextlabelright">Cell</label>
+			<input class="rowinput" type="text" name="cellphone" id="cellphone" maxlength="14" value="<?php echo $cellphone; ?>"/>			
+		</div>
+		<br />
+		<div class="row">
+			<label class="rowtextlabel">Work</label>
+			<input class="rowinput" type="text" name="worknumber" id="worknumber" maxlength="14" value="<?php echo $workphone; ?>"/>
+			<label class="rowtextlabel">Extension</label>
+			<input class="rowinput" type="text" name="extension" id="ext" maxlength="14" value="<?php echo $extension; ?>"/>
+		</div>
+		<br />
+		<div class="divCenter" >
+		<br />
+			<div class="errorStar">
+				<?php if(!empty($message)) echo $message;?>				
+			</div>
+		<br />
+		<input class="button" type="submit" name="save" id="savebutton" value="Save Changes" />
+		<input class="button" type="submit" name="cancel" id="cancelbutton" value="Cancel" />
+		
+		
+		</div>
+		</div>
+</div>
+</form>

@@ -1,0 +1,172 @@
+body
+{
+	background-color: beige;
+}
+a{
+	text-decoration:none;
+}
+/*will set the main web page position in the browser */
+.divPage
+{
+	width: 960px;
+	height:530px;	
+	margin-top:12px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom:0px;
+}
+/*will provide a banner image across the top of the web page */
+.header
+{
+	width:960px;
+	height:200;
+	background-color:black;
+}
+
+.heading
+{
+	width:350px;
+	margin-left:28px;
+	margin-top:14px;
+	padding-bottom:16px;
+	background-color:lightgrey;
+	color:black;
+	font-size:large;	
+	font-weight:700;
+}
+.labelStyle
+{
+	
+	width: 650px;
+	text-align:left;
+	color:black;
+	float:left;
+	margin-left:36px;
+	padding-top:25px;
+}
+
+.labelStyle2
+{
+	
+	width: 120px;
+	text-align:right;
+	color:black;
+	float:left;
+	margin-left:36px;
+	padding-top:25px;
+}
+
+.smallwidth
+{
+	float:left;
+	width:40px;
+}
+.headerText
+{
+	text-align:center;
+	font-size:larger;
+	color:red;
+	font-weight:900;
+	padding-top:10x;
+}
+.mytable
+{
+	width:350px;
+	background-color:beige;
+	text-align:center;
+}
+.mybuttons
+{
+	width:95px;
+	background-color:grey;
+	margin-right:8px;
+	color:white;
+	font-size:Large;
+	text-align:center;
+
+}
+/*will provide a background image for our navigation section */
+.navbar
+{	
+	width:960px;
+	height:30px;
+	background-image: url(../Images/menu.png); /*image to display in the navigation section*/
+/*	background-repeat: repeat-x */ /*The background image will be repeated only horizontally */
+}
+.labelformat
+{
+	width:135px;
+	text-align:right;
+	font-size:medium;
+	float:left;
+}
+.errorStar
+{
+	color:red;
+	float:left;
+}
+
+.labelformatlong
+{
+	width:350px;
+	text-align:right;
+	font-size:large;
+	float:left;
+}
+.navbutton a
+{
+	float:left;
+	width: 250px;
+	height:25px;
+	line-height:22px;
+	font-family:calbri;
+	font-size: 16px;
+	color:white;
+	font-weight:700;
+	text-align:center;
+	padding-left:3px;
+	
+}
+.row
+{
+	width:940px;
+}
+.navbutton a:hover
+{
+	float:left;
+	width:250px;
+	height:25px;
+	line-height:22px;
+	font-family:calibri;
+	font-size: 16px;
+	color:gold;
+	font-weight: 700;
+	text-align:center;
+	background-image: url(../Images/menu.png);
+	background-repeat: repeat-x;
+	padding-left:1px;
+}
+.fortext
+{
+	margin-left:28px;
+}
+.bodyContent
+{	
+	margin-top:12px;
+	width:960px;	
+	font-family: Times New Roman;
+	font-size:14px;
+	color:black;
+	padding-left:12px;
+	min-height:425px;
+	
+}
+.footer
+{
+width:960px;
+	height:25px;	
+	color:lightblue;
+	font-weight:900;	
+	text-align:center;
+	text-transform:uppercase;	
+}

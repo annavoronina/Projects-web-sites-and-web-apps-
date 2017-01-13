@@ -1,0 +1,147 @@
+<?php
+  
+
+?>
+<form method="POST" action="">
+<div class="divPage">
+	<div class="bodyContent">		
+		<h2>Order Page</h2>
+		  <div class="divCenter">
+				<input class="button" type="submit" name="checkout" id="checkout" value="Check Out" />
+			</div>	
+			<div class="divbox">
+				<h3>Order Album</h3>
+				<div class="row">
+					<div class="orderdropdown">
+						<label class="rowtextlabel">Category</label>
+						&nbsp;
+						<select  name="category" selected="<?php echo $category; ?>">  
+							<option value="">Select Category</option>					
+							<option value ="1">Rock</option>		
+							<option value ="2">Pop</option>		
+							<option value ="3">Jazz</option>		
+							<option value ="1">Country</option>		
+                        </select>											
+					</div>
+					&nbsp;&nbsp;
+					<input type="submit" name="categorysload" id="categorysload" value="Load"/>
+				</div>				
+				
+				<div class="row">
+					<div class="orderdropdown">
+						<label class="rowtextlabel">Select Album</label>
+						&nbsp;
+						<select  name="creation">
+							<option value="">Select</option>									
+								<option value ="1" >Album 1</option>								
+						</select>	
+					
+					</div>					
+					<input type="submit" name="details" id="details" value="View Songs"/>	
+					
+					
+					
+				</div>
+				<div>
+					<label class="rowtextlabel">Price</label>	&nbsp;&nbsp;
+					<input class="rowinputsmall" type="text"  name="price" id= "price" readonly value="<?php echo $price;?>" />
+				</div>	
+				
+				
+				
+				<?php
+			if($viewsongs ==1)
+			{
+			?>
+			<h3>Songs on the Album</h3>
+			<table>
+				<thead>
+					<tr>
+						<th class="tablecolumnposition">Postion</th>	
+						<th class="tablecolumnlarge">Title</th>
+						<th class="tablecolumn">Duration</th>	
+							
+					</tr>
+					<tbody>					
+						<tr>
+							<td class="tablecolumnposition">1</td>							
+							<td class="tablecolumnlarge">Fly By Night</td>
+							<td class="tablecolumn">4:56</td>							
+						</tr>	
+						<tr>
+							<td class="tablecolumnposition">2</td>							
+							<td class="tablecolumnlarge">Anthem</td>
+							<td class="tablecolumn">5:10</td>							
+						</tr>								
+					</tbody>
+					
+				</thead>
+			</table>
+			<?php
+			}
+			?>
+				<div class="row">
+					<div class="divCenter" >
+						<input class="button" type="submit" name="save" id="savebutton" value="Add to Order" />
+						<input class="button" type="submit" name="clear" id="clearbutton" value="Cancel" />
+						
+					</div>
+				</div>
+				
+			</div>
+			<?php
+			if($orderid == 1)
+			{
+			?>
+			<div class="row">
+				<h3>Albums Ordered</h3>
+			<table>
+				<thead>
+					<tr>
+						<th class="tablecolumnorder">Title</th>	
+						<th class="tablecolumnlarge">Group</th>
+						<th class="tablecolumn">Price</th>	
+							
+					</tr>
+					<tbody>					
+						<tr>
+							<td class="tablecolumnorder">Fly By Night</td>							
+							<td class="tablecolumnlarge">Rush</td>
+							<td class="tablecolumn">$9.99</td>							
+						</tr>	
+						<tr>
+							<td class="tablecolumnorder">All the Worlds a Stage</td>							
+							<td class="tablecolumnlarge">Rush</td>
+							<td class="tablecolumn">$12.99</td>							
+						</tr>								
+					</tbody>
+					
+				</thead>
+			</table>
+			</div>
+			<?php
+			}
+			?>
+			<div class= "taxesdisplay" >
+			     Order ID :				 				
+				<input type="text" readonly name="order" id="order" value="<?php echo $orderid; ?>" width="24px" />
+			</div>
+			<div class= "taxesdisplay" >
+			     Sub Total :				
+				<input type="text" readonly name="subtotal" id="subtotal" value="<?php echo $subtotal; ?>" width="24px" />
+			</div>
+			<div class= "taxesdisplay" >
+				Taxes :
+				<input type="text" readonly name="taxes" id="taxes" value="<?php echo $taxes; ?>" width="24px" />				
+			</div>
+			<div class= "taxesdisplay" >
+				Total :
+				<input type="text" readonly name="total" id="total" value="<?php echo $total; ?>" width="24px" />
+				
+			</div>
+		  	<br />
+			<br />
+		
+	</div>
+</div>
+</form>

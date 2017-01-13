@@ -1,0 +1,73 @@
+<form method="POST" action="">
+<div class="divPage">
+	<div class="bodyContent">		
+		<h2>Search Page</h2>
+		
+		<div class="row">
+			<label class="rowtextlabel">Search By</label>		
+			<div class="orderdropdown">						
+			&nbsp;
+			<select  name="category" selected="<?php echo $category; ?>">  
+				<option value="">Select</option>					
+				<option value ="1">Album</option>		
+				<option value ="2">Artist</option>		
+            </select>											
+			</div>
+		
+				</div>				
+				
+			<div class="row">
+				<div class="orderdropdown">
+					<label class="rowtextlabel">Select Album </label>
+					&nbsp;
+					<select  name="creation">
+						<option value="">Select</option>									
+						<option value ="1" >Album 1</option>								
+					</select>	
+					
+				</div>					
+				
+			</div>
+			<div class="divCenter">	
+				<input type="submit" name="search" id="search" value="Search"/>
+				<br />			
+			</div>
+				
+				
+			<div class="divCenter">	
+				<h3>Songs on the Album</h3>
+			</div>
+			<table>
+				<thead>
+					<tr>
+						<th class="tablecolumnposition">Postion</th>	
+						<th class="tablecolumnlarge">Title</th>
+						<th class="tablecolumn">Duration</th>	
+							
+					</tr>
+					<tbody>					
+						<tr>
+							<td class="tablecolumnposition">1</td>							
+							<td class="tablecolumnlarge">Fly By Night</td>
+							<td class="tablecolumn">4:56</td>							
+						</tr>	
+						<tr>
+							<td class="tablecolumnposition">2</td>							
+							<td class="tablecolumnlarge">Anthem</td>
+							<td class="tablecolumn">5:10</td>							
+						</tr>								
+					</tbody>
+					
+				</thead>
+			</table>
+		
+			
+
+			
+			
+		  	<br />
+			<br />
+		
+	</div>
+</div>
+</form>

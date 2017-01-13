@@ -1,0 +1,107 @@
+<?php
+	$invoicenumber ="157";
+	$customername="Joe Blow";
+	$amount="25.97";		
+	$subtotal="22.98";
+	$taxes="2.99";
+	$total="25.97";
+	
+	$orderid = "1"; 
+	$itemsrow= "";
+	$orderamount ="25.97";
+	session_start();
+	$browsersess = session_id();
+	$custID = Validate_User_Logged_In();
+	if($custID > 0)
+	{
+	Customer_Info($custID);
+	if(invoice_max_customer($custID))
+	{
+		if(load_orderDetails_by_Order())
+		{
+			Calculate_summary();
+		}
+	}
+	
+   
+
+	
+
+
+
+
+
+
+
+
+?>
+<form method="POST" action="">
+<div class="divPage">
+	<div class="bodyContent">		
+		<h2>Reciept</h2>
+		<input type = "submit" name ="landing" value="Return to Landing Page"/>
+		<div class="labelStyle2">
+		    <div class="dark">
+			<label for="ordernumber" class="dark">Invoice #</label>
+			</div>		
+			<div class="light">
+			    <input type="text" name = "invoicenumber" id ="invoicenumber" value = "<?php echo $invoicenumber; ?>"/>				
+			</div>
+			<div class="dark">	
+			<label for="customername">Customer</label>
+			</div>	
+			<div class="light">
+			<input type="text" name = "customername" id ="customername" value = "<?php echo $customername; ?>"/>							
+			</div>
+			<div class="dark">
+				<label for="amount">Amount </label>	
+			</div>
+			<div class="light">
+				<input type="text" name = "orderamount" id ="orderamount" value = "<?php echo $orderamount; ?>"/>				
+			</div>
+		</div>
+		<br />
+		<br />
+		<h2>Order Details</h2>
+		<div class="row">
+				<h3>Albums Ordered</h3>
+			<table>
+				<thead>
+					<tr>
+						<th class="tablecolumnorder">Title</th>	
+						<th class="tablecolumnlarge">Group</th>
+						<th class="tablecolumn">Price</th>	
+							
+					</tr>
+					<tbody>					
+						<tr>
+							<td class="tablecolumnorder">Fly By Night</td>							
+							<td class="tablecolumnlarge">Rush</td>
+							<td class="tablecolumn">$9.99</td>							
+						</tr>	
+						<tr>
+							<td class="tablecolumnorder">All the Worlds a Stage</td>							
+							<td class="tablecolumnlarge">Rush</td>
+							<td class="tablecolumn">$12.99</td>							
+						</tr>								
+					</tbody>
+					
+				</thead>
+			</table>
+			</div>
+		<div class= "taxesdisplay" >
+			     Sub Total :
+				 <input type="text" name = "subtotal" id="subtotal" readonly value="$<?php echo $subtotal; ?>" />				
+			</div>
+			<div class= "taxesdisplay" >
+				Taxes :
+				 <input type="text" name = "taxes" id="taxes" readonly value="$<?php echo $taxes; ?>" />				
+				
+			</div>
+			<div class= "taxesdisplay" >
+				Total :
+				<input type="text" name = "total" id="total" readonly value="$<?php echo $total; ?>" />								
+			</div>
+	</div>
+</div>
+</form>	

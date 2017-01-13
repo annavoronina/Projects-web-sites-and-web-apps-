@@ -1,0 +1,60 @@
+<?php
+include ('./dbfile.php')
+ 
+   
+?>
+<form method="POST" action="processlogin.php" autocomplete="off">
+<div class="divPage">
+	<div class="divLeft">
+		<p>
+		<img src="./images/listen.png" alt="Listening"/>
+		</p>
+	</div>
+	<div class="divRight">
+		<div class="headingright">
+		<a href="./Search.php" style="color:white;" >Search Site</a>
+		</div>
+		<ul>
+			<li>Rock Music</li>
+			<li>Pop Music</li>
+			<li>Classical Music</li>
+			<li>Jazz</li>
+		</ul>
+		<br />
+		<div class="headingright">
+		ALREADY HAVE A PROFILE
+		</div>
+		<div class="username">
+			<div class="usernametext">
+			User Name
+			</div>
+			<div class="usernameinput">
+				<input name="email" id="email" type="text"  value="<?php $email; ?>"/>
+				<div class="errorStar">
+					<?php if(isset($errors['email'])) echo $errors['email'];?>				
+				</div>
+			</div>
+		</div>
+		<br />
+		<div class="username">
+			<div class="usernametext">
+				Password
+			</div>
+			<div class="usernameinput">
+				<input name="pswd" id="pswd" type="password" />
+				<div class="errorStar">
+					<?php if(isset($errors['password'])) echo $errors['password'];?>				
+				</div>
+			</div>
+		</div>
+		<br />
+		<br />
+		<div class="loginbutton">
+			<input type="submit" name="login" id = "login" value = "LOGIN"/>			
+		</div>
+		<div class= "createprofileheading">
+		 <a href="createprofile.php">Create Profile</a>
+		</div>
+	</div>
+</div>
+</form>

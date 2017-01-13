@@ -1,0 +1,82 @@
+
+
+
+?>
+<form method="POST" action ="" autocomplete="off">
+<div class="divPage">
+	<div class="bodyContent">
+		<h3>Payment Processing</h3>
+		<div class="labelStyle2">
+		    <div class="dark">
+			<label for="ordernumber" class="dark">Order #</label>
+			</div>		
+			<div class="light">
+			     <input type="text" name = "ordernumber" readonly value ="<?php echo $ordernumber; ?>" />				
+			</div>
+			<div class="dark">	
+			<label for="customername">Customer </label>
+			</div>	
+			<div class="light">
+			<input type="text" name = "customername"  readonly value ="<?php echo $customername; ?>" />
+			</div>
+			<div class="dark">
+				<label for="amount"> Amount </label>	
+			</div>
+			<div class="light">
+				<input type="text" name = "orderamount"  readonly value ="<?php echo $orderamount; ?>" />
+			</div>
+		</div>
+		<br /> <br />
+		<div class="dark">
+			Payment Type
+		</div>
+			<select  name="card" value="<?php echo $card; ?>">  
+					<option value="">Select</option>
+					<option value="1">Visa</option>
+					<option value="2">Mastercard</option>
+			</select>
+		<br />
+		<br />
+		<div class="dark">
+			Name of Card
+		</div>
+		<div class="light">
+			<input type="text" name="nameoncard" value="<?php echo $nameoncard; ?> " />	
+				<div class="errorStar">
+				<?php if(isset($errors['cardname'])) echo $errors['cardname'];?>				
+			</div>
+		</div>
+		
+		
+		<div class="dark">
+			Expiry Date (mm/dd)
+		</div>
+		<div class="light">
+			<div class= "smallwidth">
+				<input type="text" name="expirydate" class="rowinputsmall" width="25px" value="<?php echo $expirydate; ?> " />
+				<?php if(isset($errors['exdate'])) echo $errors['exdate'];?>
+			</div>
+		</div>
+		<div class="dark">
+			Pin #
+		</div>
+		<div class="light">
+			<div class= "smallwidth">
+				<input type="text" name="pin" class="rowinputsmall" value="<?php echo $pin; ?> " />	
+				<?php if(isset($errors['pin'])) echo $errors['pin'];?>
+			</div>
+		</div>
+		<br />
+		<br />
+			<div class="errorStar">
+				<?php if(!empty($message)) echo $message;?>				
+			</div>
+		<br />	
+		<div class="divCenter">
+			<input class="button" type="submit" name="save" id="savebutton" value="Complete Order" />
+			<input class="button" type="submit" name="cancel" id="cancelbutton" value="Cancel Order" />
+			<input class="button" type="submit" name="return" id="returnbutton" value="Return to Orders" />
+		</div>
+	</div>
+</div>
+</form>

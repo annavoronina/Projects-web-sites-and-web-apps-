@@ -1,0 +1,59 @@
+<?php
+	
+	
+	
+	if(isset ($_POST ['submit']))
+  {
+	$fname = $_POST['firstname'];
+	$lname = $_POST['lastname'];
+	$hours = $_POST['hoursworked'];
+	$hourswage = $_POST['hourswage'];
+	$grossPay = $hours * $hourswage;
+	$taxes = $grossPay * 0.25;
+    }
+	else
+    {
+	$fname="";
+	$lname = "";
+	$hours = "";
+	$hourswage = "";
+	$taxes = "";
+	$grossPay = "";
+  }
+	
+	
+	
+	
+?>
+		
+	<form method="POST" action="" autocomplete="off">
+	<div class='bodyContent'>	
+				<label class="typedText"></label>
+			  <br>
+			  <br>
+				<label class="typedTextExp">First Nane</label>
+			  <input class="textboxW" id="include" type="text" name="firstname" value ="<?php echo $fname;?>" />
+			  <br/>
+			  <br/>
+				<label class="typedText">Last Name</label>
+			  <input class="textboxW" id="lastName" type="text" name="lastname" value ="<?php echo $lname; ?>"/>
+			  <br/>
+			  <br/>
+				<label class="typedText">Number of hours</label>
+			  <input class="textboxW" id="hoursWorked" type="text" name="hoursworked" value ="<?php echo $hours; ?>"/>
+			  <br/>
+			  <br/>
+				<label class="typedText">Hours Wage</label>
+			  <input class="textboxW" id="hoursWage" type="text" name="hourswage"  value ="<?php echo $hourswage; ?>"/>
+			  <br/>
+			  <br/>
+				<label class="typedTextExp">Taxes calculate</label>
+			  <input class="textboxW" type="text" name="taxes" value ="<?php echo $taxes; ?>" />
+			  <br/>
+			  <br/>
+				<label class="typedTextExp">Gross pay</label>
+			  <input class="textboxW" type="text" name="grossPay" value ="<?php echo $grossPay; ?>" />
+			  <input  type="Submit" name="submit" value= "Calculate" />
+			 
+			</div>
+		</form>
