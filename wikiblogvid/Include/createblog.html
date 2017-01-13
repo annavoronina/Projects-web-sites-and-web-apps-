@@ -1,0 +1,59 @@
+<form method="POST" action="" autocomplete="off">
+<div class="divPage">
+	<div class="divLeft">
+		<p>
+		<img src="../images/blog.png" alt="OOP Image"/>
+		</p>
+	</div>
+	<div class="divRight">	        
+		<div class="subject">
+			<div class="subjecttext">
+			Subject
+			</div>
+			<div class="subjectinput">
+				<input name="subjecttopic" id="subjecttopic" type="text"  value="<?php echo $subject; ?>"/>
+		</div>	
+<br />
+		<div class="title">
+			<div class="titletext">
+			Title
+			</div>
+			
+				<input name="ttitle" id="ttitle" type="text"  value="<?php echo $title; ?>"/>
+		</div>	
+		<br />
+		<div class="body">
+			<div class="blogtext">
+			Blog
+			</div>
+			<div class="bloginput">
+				<input name="blog" id="blog" type="text"  value="<?php echo $body; ?>"/>
+				
+			</div>
+		</div>		
+		
+		
+		<div class="divCenter">
+		    <div class="errorStar">
+				<?php if(isset($msg)) echo $msg;?>						
+			</div>
+			<br />			
+			<input type ="submit" name="create" id="create" value ="Create Blog"/>			
+			&nbsp;
+			<input type ="submit" name="clear" id="clear" value ="Clear"/>			
+			
+		</div>
+		<br />
+	
+		
+		
+	
+		
+		
+		
+	</div>
+</div>
+</form>
+	
+</div>
+</form>
